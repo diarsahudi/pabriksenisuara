@@ -1,164 +1,102 @@
 ﻿export default function Artists() {
-  const artists = [
-    {
-      name: "Pabrik Seni Suara",
-      role: "Curated Playlist",
-    },
-    {
-      name: "Sound Laboratory",
-      role: "Experimental Project",
-    },
-    {
-      name: "Session Archive",
-      role: "Production Works",
-    },
-  ];
-
   return (
     <div
       style={{
         minHeight: "100vh",
-        background:
-          "radial-gradient(circle at top, #151515 0%, #050505 70%)",
+        background: "#0a0a0a",
         color: "white",
-        padding: "60px 30px",
+        padding: "120px 8vw",
         fontFamily: "sans-serif",
       }}
     >
-      {/* HEADER */}
-      <div style={{ marginBottom: 50 }}>
-        <p
-          style={{
-            letterSpacing: 4,
-            opacity: 0.5,
-            marginBottom: 10,
-          }}
-        >
-          MUSIC COLLECTIVE
-        </p>
-
-        <h1
-          style={{
-            fontSize: "clamp(42px, 6vw, 72px)",
-            margin: 0,
-            lineHeight: 1,
-          }}
-        >
-          Artists
-          <br />
-          & Sound Library
-        </h1>
-
-        <p
-          style={{
-            maxWidth: 650,
-            marginTop: 24,
-            opacity: 0.65,
-            lineHeight: 1.8,
-          }}
-        >
-          A curated ecosystem of music, collaborations,
-          sonic experiments, and creative archives from
-          Pabrik Seni Suara.
-        </p>
-      </div>
-
-      {/* SPOTIFY */}
-      <div
+      <p
         style={{
-          borderRadius: 28,
-          overflow: "hidden",
-          border: "1px solid rgba(255,255,255,0.08)",
-          background: "rgba(255,255,255,0.03)",
-          backdropFilter: "blur(10px)",
-          padding: 20,
-          boxShadow: "0 10px 50px rgba(0,0,0,0.35)",
+          letterSpacing: 4,
+          opacity: 0.5,
         }}
       >
-        <iframe
-          data-testid="embed-iframe"
-          style={{
-            borderRadius: "18px",
-          }}
-          src="https://open.spotify.com/embed/playlist/41z8RDW5bfky27qqKP5tBD?utm_source=generator"
-          width="100%"
-          height="380"
-          frameBorder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          allowFullScreen
-          loading="lazy"
-        />
-      </div>
+        CREATIVE COLLECTIVE
+      </p>
 
-      {/* ARTIST CARDS */}
+      <h1
+        style={{
+          fontSize: "120px",
+          margin: "20px 0",
+          lineHeight: 0.9,
+        }}
+      >
+        Artists
+      </h1>
+
       <div
         style={{
-          marginTop: 50,
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: 24,
+          gap: 30,
+          marginTop: 60,
         }}
       >
-        {artists.map((artist, index) => (
-          <div
-            key={index}
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              padding: 28,
-              borderRadius: 24,
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              minHeight: 180,
-            }}
-          >
-            {/* GLOW */}
-            <div
-              style={{
-                position: "absolute",
-                width: 140,
-                height: 140,
-                borderRadius: "50%",
-                background: "rgba(178,138,82,0.15)",
-                filter: "blur(60px)",
-                top: -30,
-                right: -30,
-              }}
-            />
+        <div style={cardStyle}>
+          <p style={roleStyle}>
+            Singer • Songwriter • Producer
+          </p>
 
-            <div style={{ position: "relative", zIndex: 2 }}>
-              <p
-                style={{
-                  opacity: 0.5,
-                  letterSpacing: 2,
-                  fontSize: 12,
-                }}
-              >
-                PROJECT
-              </p>
+          <h2 style={titleStyle}>Diar Sahudi</h2>
 
-              <h2
-                style={{
-                  marginTop: 12,
-                  fontSize: 28,
-                  marginBottom: 10,
-                }}
-              >
-                {artist.name}
-              </h2>
+          <p style={descStyle}>
+            Emotional songwriting, cinematic ambience,
+            indie pop exploration, and immersive sonic
+            storytelling.
+          </p>
+        </div>
 
-              <p
-                style={{
-                  opacity: 0.65,
-                  lineHeight: 1.7,
-                }}
-              >
-                {artist.role}
-              </p>
-            </div>
-          </div>
-        ))}
+        <div style={cardStyle}>
+          <p style={roleStyle}>Modern Rock Project</p>
+
+          <h2 style={titleStyle}>Alceena Inside</h2>
+
+          <p style={descStyle}>
+            Atmospheric modern rock with alternative energy,
+            cinematic textures, and emotional intensity.
+          </p>
+        </div>
+
+        <div style={cardStyle}>
+          <p style={roleStyle}>Creative Ecosystem</p>
+
+          <h2 style={titleStyle}>Collaborative Artists</h2>
+
+          <p style={descStyle}>
+            Musicians, producers, and creators connected
+            through the evolving ecosystem of Pabrik Seni
+            Suara.
+          </p>
+        </div>
       </div>
     </div>
   );
 }
+
+const cardStyle = {
+  padding: 40,
+  borderRadius: 28,
+  background: "rgba(255,255,255,0.04)",
+  border: "1px solid rgba(255,255,255,0.08)",
+};
+
+const roleStyle = {
+  opacity: 0.5,
+  letterSpacing: 3,
+  marginBottom: 12,
+};
+
+const titleStyle = {
+  fontSize: 42,
+  margin: 0,
+};
+
+const descStyle = {
+  marginTop: 18,
+  opacity: 0.7,
+  lineHeight: 1.8,
+  maxWidth: 700,
+};
