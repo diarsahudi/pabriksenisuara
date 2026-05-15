@@ -1,102 +1,105 @@
-﻿export default function Artists() {
+﻿import Navbar from "../components/Navbar";
+
+export default function Artists() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "#0a0a0a",
-        color: "white",
-        padding: "120px 8vw",
-        fontFamily: "sans-serif",
-      }}
-    >
-      <p
-        style={{
-          letterSpacing: 4,
-          opacity: 0.5,
-        }}
-      >
-        CREATIVE COLLECTIVE
-      </p>
+    <div style={pageStyle}>
+      <Navbar />
 
-      <h1
-        style={{
-          fontSize: "120px",
-          margin: "20px 0",
-          lineHeight: 0.9,
-        }}
-      >
-        Artists
-      </h1>
+      <div style={containerStyle}>
+        <h1 style={titleStyle}>
+          Artists
+        </h1>
 
-      <div
-        style={{
-          display: "grid",
-          gap: 30,
-          marginTop: 60,
-        }}
-      >
-        <div style={cardStyle}>
-          <p style={roleStyle}>
-            Singer • Songwriter • Producer
-          </p>
+        <div style={gridStyle}>
+          {/* ARTIST 1 */}
+          <div style={cardStyle}>
+            <div style={imageStyle}></div>
 
-          <h2 style={titleStyle}>Diar Sahudi</h2>
+            <h2>
+              Diar Sahudi
+            </h2>
 
-          <p style={descStyle}>
-            Emotional songwriting, cinematic ambience,
-            indie pop exploration, and immersive sonic
-            storytelling.
-          </p>
-        </div>
+            <p style={descStyle}>
+              Emotional storytelling through indie pop,
+              cinematic ambience, and immersive sonic
+              exploration.
+            </p>
+          </div>
 
-        <div style={cardStyle}>
-          <p style={roleStyle}>Modern Rock Project</p>
+          {/* ARTIST 2 */}
+          <div style={cardStyle}>
+            <div style={imageStyle}></div>
 
-          <h2 style={titleStyle}>Alceena Inside</h2>
+            <h2>
+              Alceena Inside
+            </h2>
 
-          <p style={descStyle}>
-            Atmospheric modern rock with alternative energy,
-            cinematic textures, and emotional intensity.
-          </p>
-        </div>
+            <p style={descStyle}>
+              Atmospheric modern rock with cinematic
+              textures, alternative energy, and emotional
+              intensity.
+            </p>
+          </div>
 
-        <div style={cardStyle}>
-          <p style={roleStyle}>Creative Ecosystem</p>
+          {/* ARTIST 3 */}
+          <div style={cardStyle}>
+            <div style={imageStyle}></div>
 
-          <h2 style={titleStyle}>Collaborative Artists</h2>
+            <h2>
+              Collaborative Artists
+            </h2>
 
-          <p style={descStyle}>
-            Musicians, producers, and creators connected
-            through the evolving ecosystem of Pabrik Seni
-            Suara.
-          </p>
+            <p style={descStyle}>
+              Musicians and creators collaborating
+              across genres, visuals, and immersive
+              artistic experiences.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-const cardStyle = {
-  padding: 40,
-  borderRadius: 28,
-  background: "rgba(255,255,255,0.04)",
-  border: "1px solid rgba(255,255,255,0.08)",
+const pageStyle = {
+  minHeight: "100vh",
+  background: "#050505",
+  color: "white",
+  fontFamily: "sans-serif",
 };
 
-const roleStyle = {
-  opacity: 0.5,
-  letterSpacing: 3,
-  marginBottom: 12,
+const containerStyle = {
+  padding: "80px 8vw",
 };
 
 const titleStyle = {
-  fontSize: 42,
-  margin: 0,
+  fontSize: "clamp(50px, 8vw, 100px)",
+};
+
+const gridStyle = {
+  display: "grid",
+  gridTemplateColumns:
+    "repeat(auto-fit,minmax(300px,1fr))",
+  gap: 30,
+  marginTop: 50,
+};
+
+const cardStyle = {
+  background: "rgba(255,255,255,0.04)",
+  border: "1px solid rgba(255,255,255,0.08)",
+  borderRadius: 30,
+  padding: 24,
+};
+
+const imageStyle = {
+  height: 320,
+  borderRadius: 24,
+  background:
+    "linear-gradient(135deg,#2b2b2b,#111111)",
+  marginBottom: 24,
 };
 
 const descStyle = {
-  marginTop: 18,
   opacity: 0.7,
   lineHeight: 1.8,
-  maxWidth: 700,
 };

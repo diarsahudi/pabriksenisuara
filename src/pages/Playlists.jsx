@@ -1,20 +1,28 @@
 ﻿import Navbar from "../components/Navbar";
 
-export default function Works() {
+export default function Playlists() {
   return (
     <div style={pageStyle}>
       <Navbar />
 
       <div style={containerStyle}>
         <h1 style={titleStyle}>
-          Featured Releases
+          Curated Playlists
         </h1>
 
+        <p style={descStyle}>
+          Carefully curated selections from the universe
+          of Pabrik Seni Suara — exploring emotional
+          ambience, cinematic textures, indie discoveries,
+          alternative energy, and immersive listening
+          experiences.
+        </p>
+
         <div style={gridStyle}>
-          {/* WORK 1 */}
+          {/* PLAYLIST 1 */}
           <div style={cardStyle}>
             <iframe
-              src="https://open.spotify.com/embed/track/7bTZgmjEJOscg1q7SrZO9v?utm_source=generator"
+              src="https://open.spotify.com/embed/playlist/4B682vrPZw01jPVWSTsrVy?utm_source=generator"
               width="100%"
               height="352"
               frameBorder="0"
@@ -27,22 +35,21 @@ export default function Works() {
             ></iframe>
 
             <h2>
-              Secrets of The Mysterious Mind
+              Curated Atmospheres
             </h2>
 
             <p style={descStyle}>
-              An epic collaboration between Diar Sahudi
-              and Eross Candra — blending emotional
-              songwriting, cinematic ambience, and
-              atmospheric alternative textures inspired
-              by modern experimental rock.
+              A collection of immersive sounds,
+              emotional textures, cinematic ambience,
+              and atmospheric discoveries for deep
+              listening sessions.
             </p>
           </div>
 
-          {/* WORK 2 */}
+          {/* PLAYLIST 2 */}
           <div style={cardStyle}>
             <iframe
-              src="https://open.spotify.com/embed/track/1zxJag74JrR1CQmiqH7msN?utm_source=generator"
+              src="https://open.spotify.com/embed/playlist/2sXrYDm0JJTKwGcrJzFmmq?utm_source=generator"
               width="100%"
               height="352"
               frameBorder="0"
@@ -55,41 +62,14 @@ export default function Works() {
             ></iframe>
 
             <h2>
-              Return
+              Alternative Motion
             </h2>
 
             <p style={descStyle}>
-              A powerful modern rock release by
-              Alceena Inside, driven by emotional
-              intensity, atmospheric guitar layers,
-              and cinematic energy.
-            </p>
-          </div>
-
-          {/* WORK 3 */}
-          <div style={cardStyle}>
-            <iframe
-              src="https://open.spotify.com/embed/track/2RXcziOsNBc9QygcLwhffT?utm_source=generator"
-              width="100%"
-              height="352"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              style={{
-                border: 0,
-                borderRadius: 20,
-              }}
-            ></iframe>
-
-            <h2>
-              I Can't Fight It Anymore
-            </h2>
-
-            <p style={descStyle}>
-              An intimate indie pop-folk composition by
-              Diar Sahudi, combining warm acoustic
-              textures, emotional storytelling, and
-              reflective cinematic ambience.
+              Modern alternative energy, emotional
+              movement, late-night atmosphere, and
+              cinematic rock explorations selected by
+              Pabrik Seni Suara.
             </p>
           </div>
         </div>
@@ -131,4 +111,5 @@ const cardStyle = {
 const descStyle = {
   opacity: 0.7,
   lineHeight: 1.8,
+  marginTop: 20,
 };
