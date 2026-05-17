@@ -1,150 +1,74 @@
-﻿export default function Services() {
-  const services = [
-    {
-      title: "Music Production",
-      desc: "Songwriting, arrangement, recording, and full music production.",
-    },
-    {
-      title: "Recording Studio",
-      desc: "Professional vocal tracking, instruments, and audio sessions.",
-    },
-    {
-      title: "Artist Development",
-      desc: "Creative direction, branding, and long-term artist growth.",
-    },
-    {
-      title: "Sound Design",
-      desc: "Experimental textures, cinematic sound, and sonic identity.",
-    },
-    {
-      title: "Event & Performance",
-      desc: "Live music support, creative events, and collaboration spaces.",
-    },
-    {
-      title: "Label & Distribution",
-      desc: "Music release support and digital distribution ecosystem.",
-    },
-  ];
+﻿import Navbar from "../components/Navbar";
+import { useLanguage } from "../context/LanguageContext";
+import { content } from "../data/language";
+
+export default function Services() {
+  const { lang } = useLanguage();
+  const t = content[lang];
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background:
-          "radial-gradient(circle at top, #151515 0%, #050505 70%)",
-        color: "white",
-        padding: "60px 30px",
-        fontFamily: "sans-serif",
-      }}
-    >
-      {/* HEADER */}
-      <div style={{ marginBottom: 60 }}>
-        <p
-          style={{
-            letterSpacing: 4,
-            opacity: 0.5,
-            marginBottom: 10,
-          }}
-        >
-          CREATIVE ECOSYSTEM
-        </p>
+    <div style={page}>
+      <Navbar />
 
-        <h1
-          style={{
-            fontSize: "clamp(42px, 6vw, 72px)",
-            margin: 0,
-            lineHeight: 1,
-          }}
-        >
-          Services
-        </h1>
+      <div style={container}>
+        <h1 style={title}>{t.servicesTitle}</h1>
 
-        <p
-          style={{
-            maxWidth: 700,
-            marginTop: 24,
-            opacity: 0.65,
-            lineHeight: 1.8,
-          }}
-        >
-          Pabrik Seni Suara provides a complete ecosystem
-          for music production, artist growth, and creative collaboration.
-        </p>
-      </div>
+        <p style={desc}>{t.servicesDesc}</p>
 
-      {/* SERVICE GRID */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: 24,
-        }}
-      >
-        {services.map((service, index) => (
-          <div
-            key={index}
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              padding: 30,
-              borderRadius: 28,
-              minHeight: 240,
-
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.08)",
-
-              backdropFilter: "blur(10px)",
-            }}
-          >
-            {/* GLOW */}
-            <div
-              style={{
-                position: "absolute",
-                width: 180,
-                height: 180,
-                background: "rgba(178,138,82,0.12)",
-                borderRadius: "50%",
-                filter: "blur(70px)",
-                top: -40,
-                right: -40,
-              }}
-            />
-
-            <div style={{ position: "relative", zIndex: 2 }}>
-              <p
-                style={{
-                  opacity: 0.5,
-                  letterSpacing: 2,
-                  fontSize: 12,
-                }}
-              >
-                SERVICE
-              </p>
-
-              <h2
-                style={{
-                  marginTop: 14,
-                  marginBottom: 18,
-                  fontSize: 30,
-                  lineHeight: 1.1,
-                }}
-              >
-                {service.title}
-              </h2>
-
-              <p
-                style={{
-                  opacity: 0.68,
-                  lineHeight: 1.8,
-                  fontSize: 15,
-                }}
-              >
-                {service.desc}
-              </p>
-            </div>
-          </div>
-        ))}
+        {/* SERVICES LIST */}
+        <div style={grid}>
+          <div style={card}>Music Production</div>
+          <div style={card}>Arrangement & Sound Design</div>
+          <div style={card}>Recording Studio Service</div>
+          <div style={card}>Artist Management</div>
+          <div style={card}>Event Organizer</div>
+          <div style={card}>Record Label Support</div>
+          <div style={card}>Spotify Playlist Curation</div>
+        </div>
       </div>
     </div>
   );
 }
+
+/* ================= STYLE (DISAMAKAN DENGAN HOME) ================= */
+
+const page = {
+  minHeight: "100vh",
+  background: "#050505",
+  color: "white",
+  fontFamily: "sans-serif", // 🔥 INI KUNCI SAMA DENGAN HOME
+};
+
+const container = {
+  padding: "120px 8vw",
+};
+
+const title = {
+  fontSize: "clamp(70px, 9vw, 150px)", // 🔥 SAMA DENGAN HOME HERO
+  lineHeight: 1,
+  marginBottom: 20,
+  fontWeight: 700,
+};
+
+const desc = {
+  fontSize: "clamp(18px, 2vw, 22px)", // 🔥 SAMA DENGAN HOME
+  opacity: 0.75,
+  maxWidth: 800,
+  lineHeight: 1.8,
+  marginBottom: 40,
+};
+
+const grid = {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+  gap: 20,
+};
+
+const card = {
+  padding: 18,
+  borderRadius: 16,
+  background: "rgba(255,255,255,0.03)",
+  border: "1px solid rgba(255,255,255,0.1)",
+  fontSize: "16px", // 🔥 SAMAKAN BODY TEXT
+  opacity: 0.85,
+};

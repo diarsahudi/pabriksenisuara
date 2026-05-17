@@ -1,133 +1,164 @@
 ﻿import Navbar from "../components/Navbar";
+import { useLanguage } from "../context/LanguageContext";
+import { content } from "../data/language";
 
 export default function About() {
+  const { lang } = useLanguage();
+  const t = content[lang];
+
   return (
     <div style={pageStyle}>
       <Navbar />
 
-      {/* HERO */}
-      <div style={heroStyle}>
-        <p style={tag}>ABOUT</p>
+      <div style={container}>
+
+        {/* HEADER */}
+        <p style={sub}>ABOUT</p>
 
         <h1 style={title}>
           Pabrik Seni Suara
         </h1>
 
-        <p style={subtitle}>
-          A creative music ecosystem based in Yogyakarta, Indonesia.
+        <p style={lead}>
+          {t.aboutDesc}
         </p>
-      </div>
 
-      {/* CONTENT */}
-      <div style={content}>
-
-        <section style={block}>
-          <h2 style={h2}>Who We Are</h2>
-          <p style={text}>
-            Pabrik Seni Suara is an independent creative collective dedicated
-            to supporting all forms of musical expression. We accompany the
-            journey from an initial idea to a fully realized work ready to be
-            shared with audiences worldwide.
+        {/* CORE */}
+        <Section title="CORE MOVEMENT">
+          <p>
+            Pabrik Seni Suara is a creative home that supports musical expression from idea to release,
+            building strong artistic identity through collaboration and long-term creative development.
           </p>
-        </section>
+        </Section>
 
-        <section style={block}>
-          <h2 style={h2}>What We Do</h2>
-          <p style={text}>
-            Our core services include music production, songwriting, arrangement,
-            professional recording, artist development, event organization,
-            free record label support, and curated Spotify playlists.
-            We help musicians, brands, and individuals create works that are
-            unique, professional, and strongly defined in identity.
-          </p>
-        </section>
+        {/* SERVICES */}
+        <Section title="CORE SERVICES">
+          <List
+            items={[
+              "Music production & songwriting",
+              "Arrangement & sonic development",
+              "Professional recording",
+              "Artist management",
+              "Event organizing",
+              "Free record label support",
+              "Spotify playlist curation",
+            ]}
+          />
+        </Section>
 
-        <section style={block}>
-          <h2 style={h2}>Creative Programs</h2>
-          <p style={text}>
-            Beyond production, we build programs for artistic growth such as
-            music workshops, new artist incubation, collaborative cross-arts
-            projects, and a release-sharing system designed to support emerging
-            creators.
-          </p>
-        </section>
+        {/* PROGRAMS */}
+        <Section title="CREATIVE PROGRAMS">
+          <List
+            items={[
+              "Arisan rilisan (release circulation system)",
+              "Music workshops",
+              "New artist incubation",
+              "Cross-disciplinary collaboration",
+              "Opportunity to become producer",
+            ]}
+          />
+        </Section>
 
-        <section style={block}>
-          <h2 style={h2}>Expanding Ecosystem</h2>
-          <p style={text}>
-            Our future direction includes live streaming sessions, merchandising,
-            publishing and licensing services, and a growing creative community
-            that connects artists, producers, and collaborators across disciplines.
-          </p>
-        </section>
+        {/* ECOSYSTEM */}
+        <Section title="EXPANDING ECOSYSTEM">
+          <List
+            items={[
+              "Live streaming projects",
+              "Merchandising development",
+              "Publishing & licensing",
+              "Creative community network",
+            ]}
+          />
+        </Section>
 
-        <section style={block}>
-          <h2 style={h2}>Vision</h2>
-          <p style={text}>
-            We believe music is not just something to be heard, but something
-            to be experienced, shared, and remembered. Our mission is to build
-            a long-lasting creative ecosystem where sound, emotion, and identity
-            merge into meaningful artistic works.
+        {/* WHO WE WORK WITH */}
+        <Section title="WHO WE WORK WITH">
+          <List
+            items={[
+              "Independent musicians",
+              "Brands & creative businesses",
+              "Schools & institutions",
+              "Event organizers",
+              "Individual creators",
+            ]}
+          />
+        </Section>
+
+        {/* PHILOSOPHY */}
+        <Section title="PHILOSOPHY">
+          <p>
+            We believe music is not just a product, but a long-term creative identity.
+            Every work is designed to be meaningful, sustainable, and emotionally connected to its audience.
           </p>
-        </section>
+
+          <p>
+            Pabrik Seni Suara exists as a partner in building artistic value that lasts beyond trends.
+          </p>
+        </Section>
 
       </div>
     </div>
   );
 }
 
-/* ================= STYLE ================= */
+/* COMPONENT */
+function Section({ title, children }) {
+  return (
+    <div style={{ marginTop: 60 }}>
+      <h2 style={sectionTitle}>{title}</h2>
+      <div style={{ opacity: 0.85, lineHeight: 1.9, fontSize: 18 }}>
+        {children}
+      </div>
+    </div>
+  );
+}
 
+function List({ items }) {
+  return (
+    <ul style={{ paddingLeft: 20 }}>
+      {items.map((item, i) => (
+        <li key={i} style={{ marginBottom: 10 }}>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/* STYLE */
 const pageStyle = {
   minHeight: "100vh",
   background: "#050505",
   color: "white",
   fontFamily: "sans-serif",
-  overflowX: "hidden",
 };
 
-/* HERO */
-const heroStyle = {
-  padding: "120px 8vw 60px",
-  textAlign: "center",
+const container = {
+  padding: "100px 8vw",
+  maxWidth: 1000,
 };
 
-const tag = {
+const sub = {
   letterSpacing: 4,
   opacity: 0.5,
-  fontSize: 12,
 };
 
 const title = {
-  fontSize: "clamp(42px, 7vw, 90px)",
+  fontSize: "clamp(50px, 8vw, 110px)",
   marginTop: 20,
   lineHeight: 1.1,
 };
 
-const subtitle = {
-  marginTop: 20,
-  opacity: 0.7,
+const lead = {
+  marginTop: 30,
   fontSize: 18,
+  lineHeight: 1.8,
+  opacity: 0.8,
+  maxWidth: 800,
 };
 
-/* CONTENT */
-const content = {
-  padding: "60px 8vw 120px",
-  maxWidth: 900,
-  margin: "0 auto",
-};
-
-const block = {
-  marginBottom: 60,
-};
-
-const h2 = {
-  fontSize: 28,
+const sectionTitle = {
+  fontSize: 22,
   marginBottom: 16,
-};
-
-const text = {
-  lineHeight: 1.9,
-  opacity: 0.75,
-  fontSize: 16,
+  color: "#B28A52",
 };

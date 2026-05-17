@@ -1,60 +1,63 @@
 ﻿import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
+import { content } from "../data/language";
 
 export default function Navbar() {
+  const { lang, setLang } = useLanguage();
+  const t = content[lang].nav;
+
   return (
-    <div
-      style={{
-        padding: "24px 8vw",
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        position: "sticky",
-        top: 0,
-        zIndex: 999,
-        backdropFilter: "blur(10px)",
-        background: "rgba(0,0,0,0.35)",
-      }}
-    >
-      <Link
-        to="/"
-        style={{
-          color: "white",
-          textDecoration: "none",
-          fontWeight: "bold",
-        }}
-      >
-        Pabrik Seni Suara
-      </Link>
+    <div style={nav}>
+      {/* MENU KIRI (SUDAH TANPA PSS) */}
+      <div style={left} />
 
-      <div
-        style={{
-          display: "flex",
-          gap: 20,
-          fontSize: 14,
-        }}
-      >
-        <Link to="/works" style={linkStyle}>
-          Works
-        </Link>
+      {/* MENU TENGAH */}
+      <div style={center}>
+        <Link to="/">{t.home}</Link>
+        <Link to="/about">{t.about}</Link>
+        <Link to="/services">{t.services}</Link>
+        <Link to="/playlists">{t.playlists}</Link>
+        <Link to="/artists">{t.artists}</Link>
+        <Link to="/works">{t.works}</Link>
+        <Link to="/contact">{t.contact}</Link>
+      </div>
 
-        <Link to="/artists" style={linkStyle}>
-          Artists
-        </Link>
-
-        <Link to="/playlists" style={linkStyle}>
-          Playlists
-        </Link>
-
-        <Link to="/contact" style={linkStyle}>
-          Contact
-        </Link>
+      {/* LANGUAGE SWITCH */}
+      <div style={right}>
+        <button onClick={() => setLang("en")}>EN</button>
+        <button onClick={() => setLang("id")}>ID</button>
       </div>
     </div>
   );
 }
 
-const linkStyle = {
-  color: "white",
-  textDecoration: "none",
-  opacity: 0.7,
+/* ================= STYLE ================= */
+
+const nav = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "20px 8vw",
+  position: "fixed",
+  top: 0,
+  width: "100%",
+  background: "rgba(0,0,0,0.6)",
+  backdropFilter: "blur(10px)",
+  zIndex: 10,
+};
+
+const left = {
+  width: 60, // spacer biar layout tetap balance
+};
+
+const center = {
+  display: "flex",
+  gap: 16,
+  flexWrap: "wrap",
+  justifyContent: "center",
+};
+
+const right = {
+  display: "flex",
+  gap: 10,
 };

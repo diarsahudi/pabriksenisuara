@@ -1,225 +1,105 @@
-﻿import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+﻿import Navbar from "../components/Navbar";
+import { useLanguage } from "../context/LanguageContext";
+import { content } from "../data/language";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Home() {
+  const { lang } = useLanguage();
+  const t = content[lang];
+  const navigate = useNavigate();
+
   return (
-    <div style={pageStyle}>
-      {/* BACKGROUND */}
-      <div style={bgStyle}></div>
-      <div style={overlayStyle}></div>
-
-      <div style={glowOne}></div>
-      <div style={glowTwo}></div>
-
+    <div style={page}>
       <Navbar />
 
+      {/* BACKGROUND */}
+      <div style={bg}></div>
+      <div style={overlay}></div>
+
       {/* HERO */}
-      <div style={heroStyle}>
-        <p style={subText}>MUSIC • ART • COLLABORATION</p>
+      <div style={hero}>
+        <h1 style={title}>{t.heroTitle}</h1>
 
-        <h1 style={titleStyle}>
-          Pabrik <br />
-          Seni Suara
-        </h1>
+        <p style={desc}>{t.heroDesc}</p>
 
-        <p style={descStyle}>
-          A creative music ecosystem from Yogyakarta —
-          connecting artists, sound, and storytelling into a
-          modern cinematic music experience.
-        </p>
+        <button onClick={() => navigate("/works")} style={btn}>
+          {t.explore}
+        </button>
 
-        <Link to="/works">
-          <button style={buttonStyle}>
-            Explore Works
-          </button>
-        </Link>
-      </div>
-
-      {/* ABOUT SECTION */}
-      <div style={aboutSection}>
-        <p style={sectionTag}>ABOUT</p>
-
-        <h2 style={aboutTitle}>
-          A Creative Ecosystem Built Around Music,
-          Storytelling, and Artistic Collaboration.
-        </h2>
-
-        <p style={aboutText}>
-          Pabrik Seni Suara is an independent creative collective
-          from Yogyakarta, Indonesia — built as a collaborative
-          ecosystem for musicians, producers, visual creators,
-          and storytellers.
-        </p>
-
-        <p style={aboutText}>
-          We focus on music production, songwriting development,
-          arrangement, recording, artist collaboration, visual identity,
-          curated sound experiences, live performance, and experimental
-          creative projects.
-        </p>
-
-        <p style={aboutText}>
-          We believe music is not only to be heard, but to be felt,
-          experienced, and shared as an emotional journey.
-        </p>
-      </div>
-
-      {/* CONTACT SECTION */}
-      <div style={contactSection}>
-        <a href="https://instagram.com/pabriksenisuara" style={contactBtn}>
-          Instagram
-        </a>
-
-        <a href="https://wa.me/628988331158" style={contactBtn}>
-          WhatsApp
-        </a>
-
-        <a href="mailto:pabriksenisuara@gmail.com" style={contactBtn}>
-          Email
-        </a>
+        {/* CONTACT LINK (tetap ada di bawah) */}
+        <div style={{ marginTop: 35 }}>
+          <Link to="/contact" style={{ color: "white", opacity: 0.8 }}>
+            Contact
+          </Link>
+        </div>
       </div>
     </div>
   );
 }
 
-/* ================= STYLES ================= */
+/* ===================== STYLE ===================== */
 
-const pageStyle = {
+const page = {
   minHeight: "100vh",
   color: "white",
+  background: "#000",
   fontFamily: "sans-serif",
   position: "relative",
-  overflowX: "hidden",
-  background: "#000",
+  overflow: "hidden",
 };
 
-/* BACKGROUND */
-const bgStyle = {
+const bg = {
   position: "absolute",
   inset: 0,
-  backgroundImage: "url('/Studio.png')",
+  backgroundImage:
+    "url('https://images.unsplash.com/photo-1511379938547-c1f69419868d')",
   backgroundSize: "cover",
   backgroundPosition: "center",
-  filter: "brightness(0.45) contrast(1.1)",
+  opacity: 0.45,
   zIndex: 0,
 };
 
-const overlayStyle = {
+const overlay = {
   position: "absolute",
   inset: 0,
   background:
-    "radial-gradient(circle at top, rgba(178,138,82,0.18), rgba(0,0,0,0.95) 60%)",
+    "radial-gradient(circle at top, rgba(0,0,0,0.3), rgba(0,0,0,0.95))",
   zIndex: 1,
 };
 
-const glowOne = {
-  position: "absolute",
-  width: 500,
-  height: 500,
-  borderRadius: "50%",
-  background: "rgba(178,138,82,0.18)",
-  filter: "blur(120px)",
-  top: -120,
-  left: -120,
-};
-
-const glowTwo = {
-  position: "absolute",
-  width: 400,
-  height: 400,
-  borderRadius: "50%",
-  background: "rgba(255,255,255,0.06)",
-  filter: "blur(120px)",
-  bottom: -100,
-  right: -100,
-};
-
-/* HERO */
-const heroStyle = {
-  minHeight: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
+const hero = {
+  position: "relative",
+  zIndex: 2,
+  paddingTop: 160,
   textAlign: "center",
-  padding: "0 6vw",
-  position: "relative",
-  zIndex: 2,
+  paddingLeft: "8vw",
+  paddingRight: "8vw",
 };
 
-const subText = {
-  letterSpacing: 4,
-  opacity: 0.6,
-  fontSize: 12,
+/* 🔥 TEXT DIPERBESAR */
+const title = {
+  fontSize: "clamp(70px, 9vw, 150px)",
+  lineHeight: 1,
+  marginBottom: 20,
+  fontWeight: 700,
+  letterSpacing: 1,
 };
 
-const titleStyle = {
-  fontSize: "clamp(44px, 10vw, 110px)",
-  lineHeight: 1.05,
-  margin: "20px 0",
-};
-
-const descStyle = {
-  maxWidth: 600,
+const desc = {
+  fontSize: "clamp(18px, 2vw, 22px)",
+  maxWidth: 800,
+  margin: "0 auto",
+  opacity: 0.75,
   lineHeight: 1.8,
-  opacity: 0.75,
+  marginBottom: 30,
 };
 
-/* ABOUT */
-const aboutSection = {
-  padding: "120px 8vw",
-  background: "rgba(0,0,0,0.6)",
-  position: "relative",
-  zIndex: 2,
-};
-
-const sectionTag = {
-  letterSpacing: 4,
-  opacity: 0.5,
-  fontSize: 12,
-};
-
-const aboutTitle = {
-  fontSize: "clamp(30px, 5vw, 60px)",
-  marginTop: 20,
-  lineHeight: 1.2,
-  maxWidth: 900,
-};
-
-const aboutText = {
-  marginTop: 30,
-  maxWidth: 900,
-  lineHeight: 1.9,
-  opacity: 0.75,
-};
-
-/* CONTACT */
-const contactSection = {
-  padding: "80px 8vw",
-  display: "flex",
-  gap: 16,
-  flexWrap: "wrap",
-  position: "relative",
-  zIndex: 2,
-};
-
-const contactBtn = {
-  padding: "14px 24px",
-  borderRadius: 999,
-  background: "rgba(255,255,255,0.08)",
-  color: "white",
-  textDecoration: "none",
-  border: "1px solid rgba(255,255,255,0.1)",
-};
-
-/* BUTTON */
-const buttonStyle = {
-  marginTop: 40,
+const btn = {
   padding: "14px 28px",
+  background: "#B28A52",
+  border: "none",
   borderRadius: 999,
-  border: "1px solid rgba(255,255,255,0.15)",
-  background: "linear-gradient(135deg, #B28A52, #7c3aed)",
-  fontWeight: "bold",
+  color: "white",
   cursor: "pointer",
-  color: "black",
+  fontWeight: "bold",
 };
